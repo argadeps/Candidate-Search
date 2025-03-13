@@ -1,2 +1,2 @@
 # Candidate-Search
-This is a faux applicant tracking system (ats)
+This is a faux Applicant Tracking System (ATS)
