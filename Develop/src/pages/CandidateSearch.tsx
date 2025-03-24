@@ -85,7 +85,7 @@ const nextCandidate = () => {
 };
 
 const currentCandidate = candidates[currentIndex];
-const noMoreCandidates = candidates.length === 0 || currentIndex => CandidateSearch.length;
+const noMoreCandidates = candidates.length === 0 || currentIndex >= candidates.length;
 
 return (
   <div className='candidate-search'>
@@ -102,18 +102,61 @@ return (
       <div className='loading'>Loading Candidates...</div>
     ) : error ? (
       <div className='error'>{error}</div>
-      
-    ) : noMoreCandidates ? 
-    }
+    ) : noMoreCandidates ? (
+      <div className='no-candidates'>
+        <h2>No Candidates Available</h2>
+        <p>Click "Find New Candidates" to discover more users.</p>
+        {getSavedCandidates().length > 0 && (
+          <button onClick={() => navigate('/SavedCandidates')}>
+            View Saved Candidates
+          </button>
+        )}
+      </div>
+    ) : (
+      <div className='candidate-card'>
+        <div className='candidate-info'>
+        <img 
+        src={currentCandidate.avatar_url}
+        alt={`${currentCandidate.name || currentCandidate.login} avatar`}
+        className='candidate-avatar'
+        />
+        <h2>className='candidate-name'>{currentCandidate.name || currentCandidate.login}</h2>
+        <p className='candidate-username'>@{currentCandidate.login}</p>
 
-  </div>
+        <div className='candidate-details'>
+          <p>
+            <span className='detail-label'>location:</span>
+            {currentCandidate.location || 'Not Specified'}
+          </p>
+          <p>
+            <span className='detail-label'>Email:</span>
+            {currentCandidate.email || 'Not Available'}
+          </p>
+          <p>
+            <span className='detail-label'>GitHub:</span>
+            <a
+            href={currentCandidate.html_url}
+            target='blank'
+            rel='noopener noreferrer'
+            >
+              {currentCandidate.html_url}
+            </a>
+          </p>
+        </div>
+
+
+    )
+      
+   </div> 
+
+
 )
 
 
 
     
 
-}
+
 
 
 
