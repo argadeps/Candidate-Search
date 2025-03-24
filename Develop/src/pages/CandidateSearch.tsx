@@ -89,6 +89,7 @@ const noMoreCandidates = candidates.length === 0 || currentIndex >= candidates.l
 
 return (
   <div className='candidate-search'>
+    <h1 className='page-title'>Candidate Search</h1>
     <div className='refresh-container'>
       <button onClick={handleRefresh}
       className='refresh-button'
@@ -113,15 +114,15 @@ return (
         )}
       </div>
     ) : (
-      <div className='candidate-card'>
-        <div className='candidate-info'>
-        <img 
-        src={currentCandidate.avatar_url}
-        alt={`${currentCandidate.name || currentCandidate.login} avatar`}
-        className='candidate-avatar'
-        />
-        <h2>className='candidate-name'>{currentCandidate.name || currentCandidate.login}</h2>
-        <p className='candidate-username'>@{currentCandidate.login}</p>
+      <div className='candidate-profile'>        
+          <img
+            src={currentCandidate.avatar_url}
+            alt={`${currentCandidate.name || currentCandidate.login} avatar`}
+            className="candidate-avatar"
+            />
+          <h2 className="candidate-name">{currentCandidate.name || currentCandidate.login}</h2>
+          <p className="candidate-username">@{currentCandidate.login}</p>         
+      
 
         <div className='candidate-details'>
           <p>
@@ -142,22 +143,33 @@ return (
               {currentCandidate.html_url}
             </a>
           </p>
+          <p> 
+          <span className="detail-label">Company:</span> 
+          {currentCandidate.company || 'Not specified'}
+          </p>
         </div>
+        <div className='candidate-actions'>
+        <button 
+         className="reject-btn" 
+         onClick={handleReject}
+         aria-label="Reject Candidate"
+       >
+         <span className="btn-icon">-</span>
+       </button>
 
+       <button 
+              className="accept-btn" 
+              onClick={handleAccept}
+              aria-label="Accept Candidate"
+            >
+              <span className="btn-icon">+</span>
+            </button>
+        </div> 
+        </div>
+    )}
+    </div>
+);
 
-    )
-      
-   </div> 
-
-
-)
-
-
-
-    
-
-
-
-
-
+};
 export default CandidateSearch;
+
