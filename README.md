@@ -55,6 +55,11 @@ The following images show the web application's appearance and functionality:
 
 ![The potential candidates page displays a list of potential candidates and allows the user to reject a candidate.](potential_candidates.png)
 
+![screenshot of Candidate Search](candidatesearch.png)
+![screenshot of Potential Candidates](potentential.png)
+
 ## Links:
 
 https://github.com/argadeps/Candidate-Search
+
+https://candidate-search-39ms.onrender.com

@@ -102,7 +102,7 @@ return (
     className='refresh-button'
     disabled={loading}
     > 
-    Find New Canidates
+    Find New Candidates
     </button>      
   </div>
   
