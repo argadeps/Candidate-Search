@@ -86,18 +86,39 @@ const nextCandidate = () => {
 
 const currentCandidate = candidates[currentIndex];
 const noMoreCandidates = candidates.length === 0 || currentIndex >= candidates.length;
+const savedCandidatesCount = getSavedCandidates().length;
 
 return (
   <div className='candidate-search'>
     <h1 className='page-title'>Candidate Search</h1>
-    <div className='refresh-container'>
-      <button onClick={handleRefresh}
-      className='refresh-button'
-      disabled={loading}
-      > 
-      Find New Canidates
-      </button>      
-    </div>
+    <div className='navigation-container' style={{ 
+  display: 'flex', 
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  marginBottom: '20px'
+}}>
+  <div className='refresh-container'>
+    <button onClick={handleRefresh}
+    className='refresh-button'
+    disabled={loading}
+    > 
+    Find New Canidates
+    </button>      
+  </div>
+  
+  {savedCandidatesCount > 0 && (
+    <button 
+      onClick={() => navigate('/SavedCandidates')}
+      className='view-saved-button'
+      style={{
+        backgroundColor: '#646cff',
+        marginLeft: 'auto'
+      }}
+    >
+      View Potential Candidates ({savedCandidatesCount})
+    </button>
+  )}
+</div>
 
     {loading ? (
       <div className='loading'>Loading Candidates...</div>

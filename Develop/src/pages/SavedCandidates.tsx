@@ -82,8 +82,10 @@ const SavedCandidates = () => {
           bValue = (b.company || '').toLowerCase();
           break;
         case 'bio':
-          aValue = (a.bio || '').toLowerCase();
-          bValue = (b.bio || '').toLowerCase();
+          
+          aValue = ((a as Candidate & { bio?: string }).bio || '').toLowerCase();
+          bValue = ((b as Candidate & { bio?: string }).bio || '').toLowerCase();
+          
           break;
         default:
           return 0;
@@ -241,7 +243,7 @@ const SavedCandidates = () => {
                   )}
                 </td>
                 <td>{candidate.company || 'Not specified'}</td>
-                <td>{candidate.bio || 'No bio available'}</td>
+                <td>{(candidate as any).bio || 'No bio available'}</td>
                 <td>
                   <button
                     style={styles.rejectBtn}
